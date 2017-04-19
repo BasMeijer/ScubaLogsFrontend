@@ -1,0 +1,98 @@
+
+.map{
+    background-color: green;
+    height:650px;
+
+}
+h1{
+    /*color:#002f7c;*/
+    font-weight: 700;
+    margin-left:25px;
+}
+
+body{
+    background-color: #f6f6f6;
+}
+
+
+header{
+    position: absolute;
+    top: 25px;
+    z-index: 99999;
+}
+
+.btn-profile{
+    float: right;
+    padding: 10px 25px;
+    margin-right:25px;
+    border-radius: 15px;
+    font-size:1.2em;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    margin-top:30px;
+    color: #fff;
+}
+
+.btn-home{
+    float:left;
+}
+
+.homepage-container{
+    margin:0 auto;
+    margin-top:-100px;
+    z-index: 99999;
+}
+
+.content-box{
+    background-color: #fff;
+    padding:25px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(235,235,235,1);
+    -moz-box-shadow: 0px 0px 10px 2px rgba(235,235,235,1);
+    box-shadow: 0px 0px 10px 2px rgba(235,235,235,1);
+    margin-bottom: 25px;
+    box-sizing: border-box;
+}
+
+.stat-container{
+    background-image: url('../../images/stats-bg-img.jpg');
+    display:flex;
+    justify-content: space-between;
+    padding: 75px;
+    background-size: cover;
+}
+
+.stat-box{
+    display: inline-block;
+    padding: 10px 50px;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+
+}
+
+.stat{
+    font-size: 1.7em;
+}
+
+.stat-number{
+    font-size: 2.5em;
+}
+
+.stat-content{
+    float:left;
+}
+
+.stat-icon{
+    height:35px;
+    float:left;
+    /*margin-right:25px;*/
+    margin-top:-20px;
+}
+
+.stat-description{
+    display:block;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9em;
+}

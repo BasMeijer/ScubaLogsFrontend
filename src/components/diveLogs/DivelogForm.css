@@ -1,0 +1,23 @@
+
+.create-divelog-form-container{
+    padding:50px;
+    box-sizing: border-box;
+    width:50%;
+    min-width: 400px;
+    margin: 0 auto;
+}
+
+.textfield{
+    width:100%;
+    margin-top:5px;
+    padding:10px;
+}
+
+.form-btn{
+    padding: 10px 30px;
+    background-color: blue;
+    border: none;
+    margin-top:10px;
+    color: #fff;
+    font-weight: 700;
+}
