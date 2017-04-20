@@ -1,0 +1,28 @@
+.user-background{
+    height:650px;
+    background-color: blue;
+    background-image: url('../../images/profile-pic2.jpg');
+    background-size: cover;
+}
+
+.profile-picture{
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+    background-color: green;
+    float:left;
+    background-image: url('../../images/pfpic.jpg');
+    background-size: cover;
+}
+
+.user-description{
+    max-width:600px;
+    display:inline-block;
+    margin-left:40px;
+}
+
+.user-username{
+    padding:0;
+    margin:0;
+    margin-top:10px;
+}

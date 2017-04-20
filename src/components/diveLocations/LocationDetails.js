@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import OverviewMap from '../map/OverviewMap'
 import GlobalTemperatureChart from '../charts/GlobalTemperatureChart'
-import BarExample from '../charts/diveNumberChart'
+import DiveNumberChart from '../charts/diveNumberChart'
 import { getSingleLocation, getLogsByLocation } from '../../api/rest'
 import { hashHistory } from 'react-router'
 
@@ -11,6 +11,7 @@ import diverIcon from '../../images/diver-icon.png'
 import locationIcon from '../../images/location-icon.png'
 import temperatureIcon from '../../images/temperature-icon.png'
 import logbookIcon from '../../images/book-icon.png'
+import starIcon from '../../images/star.png'
 
 class LocationDetails extends Component {
 
@@ -52,6 +53,17 @@ class LocationDetails extends Component {
         })
     }
 
+
+    createTemperatureData() {
+        let temperatureData = []
+
+        this.state.divelogs.forEach((divelog) => {
+            temperatureData.push(divelog.divelogData.depthTemperature)
+        })
+
+        return temperatureData
+    }
+
     createDivelogTable() {
         let diveLogTableRows = []
         let diveLogs = this.state.divelogs
@@ -61,14 +73,13 @@ class LocationDetails extends Component {
         lastDivelogs.forEach((divelog) => {
             diveLogTableRows.push(
                 <div className="divelog-row" key={divelog._id}>
-                    <h4>{divelog.username}</h4>
-                    <p>
+                    <h4 className="divelog-username">{divelog.username}</h4>
+                    <p className="divelog-description">
                         {divelog.divelogData.description}
                     </p>
                 </div>
             )
         })
-
         return diveLogTableRows
     }
 
@@ -79,17 +90,20 @@ class LocationDetails extends Component {
         let totalRating = 0
         let totalFlora = 0
         let totalFauna = 0
+        let totalVisibility = 0
 
         diveLogs.forEach((divelog) => {
             totalRating += divelog.divelogData.rating
             totalFlora += divelog.divelogData.flora
             totalFauna += divelog.divelogData.fauna
+            totalVisibility += divelog.divelogData.visibility
         })
 
         return {
-            avgRating: totalRating / numberOfItems,
-            avgFlora: totalFlora / numberOfItems,
-            avgFauna: totalFauna / numberOfItems
+            avgRating: Math.round(totalRating / numberOfItems),
+            avgFlora: Math.round(totalFlora / numberOfItems),
+            avgFauna: Math.round(totalFauna / numberOfItems),
+            avgVisibility: Math.round(totalVisibility / numberOfItems)
         }
     }
 
@@ -109,12 +123,15 @@ class LocationDetails extends Component {
 
             let statistics = this.createDivelogStatistics()
 
+            let temperatureData = this.createTemperatureData()
+
             return (
                 <div className="pure-g main-container">
 
                     <header className="pure-u-1">
                         <h1 className="btn-home" onClick={() => { hashHistory.push('/') }}>ScubaLogs</h1>
                         <h2 className="btn-profile" onClick={() => { hashHistory.push('/users/Bas') }}>My Profile</h2>
+                        <h2 className="btn-logdive" onClick={() => { hashHistory.push('/divelogs/Bas/new') }}>Log Dive</h2>
                     </header>
 
                     <div className="pure-u-1 map">
@@ -125,55 +142,84 @@ class LocationDetails extends Component {
 
                     <div className="pure-u-1 pure-u-md-2-3 homepage-container">
 
-                        <div className="content-box">
-                            <h3 className="location-name">{this.state.diveLocation.name}</h3>
-                            <h4>Rating: {statistics.avgRating}</h4>
-                            <h4>Life: {statistics.avgFauna}</h4>
-                            <h4>Plants: {statistics.avgFlora}</h4>
-                            <h4>Safety: Safe</h4>
+                        <div className="hightlight-container">
+
+                            <div className="hightlight-item">
+                                <h4 className="hightlight-title">Rating</h4>
+                                <div className="hightlight-content">
+                                    <h5 className="hightlight-number"> {statistics.avgRating}</h5>
+                                    <img src={starIcon} className="rating-icon" alt="" />
+                                </div>
+                            </div>
+                            <div className="hightlight-item">
+                                <h4 className="hightlight-title">Life</h4>
+                                <div className="hightlight-content">
+                                    <h5 className="hightlight-number"> {statistics.avgFauna}</h5>
+                                    <img src={starIcon} className="rating-icon" alt="" />
+                                </div>
+                            </div>
+                            <div className="hightlight-item">
+                                <h4 className="hightlight-title">Plants</h4>
+                                <div className="hightlight-content">
+                                    <h5 className="hightlight-number"> {statistics.avgFlora}</h5>
+                                    <img src={starIcon} className="rating-icon" alt="" />
+                                </div>
+                            </div>
+                            <div className="hightlight-item">
+                                <h4 className="hightlight-title">Safety</h4>
+                                <div className="hightlight-content">
+                                    <h5 className="hightlight-number"> Safe</h5>
+                                    <img src={starIcon} className="rating-icon" alt="" />
+                                </div>
+                            </div>
+                            <div className="hightlight-item">
+                                <h4 className="hightlight-title">Visibility</h4>
+                                <div className="hightlight-content">
+                                    <h5 className="hightlight-number"> {statistics.avgVisibility}</h5>
+                                    <img src={starIcon} className="rating-icon" alt="" />
+                                </div>
+                            </div>
                         </div>
 
                         <div className="content-box pure-u-1 stat-container">
+                            <h3 className="location-name">{this.state.diveLocation.name}</h3>
+                            <div className="statistics-divider">
+                                <div className="stat-box">
 
-                            <div className="stat-box">
+                                    <img src={diverIcon} alt="" className="stat-icon" />
 
-                                <img src={diverIcon} alt="" className="stat-icon" />
+                                    <div className="stat-content">
+                                        <span className="stat-number">{diverSet.size}</span>
+                                        <span className="stat-description">Divers</span>
+                                    </div>
+                                </div>
+                                <div className="stat-box">
 
-                                <div className="stat-content">
-                                    <span className="stat-number">{diverSet.size}</span>
-                                    <span className="stat-description">Divers</span>
+                                    <img src={logbookIcon} alt="" className="stat-icon" />
+
+                                    <div className="stat-content">
+                                        <span className="stat-number">{this.state.divelogs.length}</span>
+                                        <span className="stat-description">Divelogs</span>
+                                    </div>
+                                </div>
+
+                                <div className="stat-box">
+
+                                    <img src={temperatureIcon} alt="" className="stat-icon" />
+
+                                    <div className="stat-content">
+                                        <span className="stat-number">{currentTemperature}°C</span>
+                                        <span className="stat-description">Temperature</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="stat-box">
-
-                                <img src={logbookIcon} alt="" className="stat-icon" />
-
-                                <div className="stat-content">
-                                    <span className="stat-number">{this.state.divelogs.length}</span>
-                                    <span className="stat-description">Divelogs</span>
-                                </div>
-                            </div>
-
-                            <div className="stat-box">
-
-                                <img src={temperatureIcon} alt="" className="stat-icon" />
-
-                                <div className="stat-content">
-                                    <span className="stat-number">{currentTemperature}°C</span>
-                                    <span className="stat-description">Temperature</span>
-                                </div>
-                            </div>
-
 
                         </div>
 
                         <div className="content-box">
+
                             <div className="pure-u-1 pure-u-md-1-3">
-                                <h3>Statistics</h3>
-                                <h5>Life</h5>
-                                <h5>Plants</h5>
-                                <h5>Rating</h5>
-                                <h5>Visibility</h5>
+                                <h3>Top divers</h3>
 
                             </div>
                             <div className="pure-u-1 pure-u-md-2-3">
@@ -184,12 +230,12 @@ class LocationDetails extends Component {
 
                         <div className="content-box home-chart">
                             <h3>Global Temperature</h3>
-                            <GlobalTemperatureChart />
+                            <GlobalTemperatureChart data={temperatureData} />
                         </div>
 
                         <div className="content-box home-chart">
                             <h3>Dives per month</h3>
-                            <BarExample />
+                            <DiveNumberChart data={[5, 7, 12, 19]} />
                         </div>
 
                     </div>

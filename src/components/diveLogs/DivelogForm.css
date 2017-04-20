@@ -5,19 +5,46 @@
     width:50%;
     min-width: 400px;
     margin: 0 auto;
+    margin-top:100px;
 }
 
 .textfield{
     width:100%;
     margin-top:5px;
     padding:10px;
+    box-sizing: border-box;
+    margin-bottom:10px;
 }
 
 .form-btn{
-    padding: 10px 30px;
-    background-color: blue;
-    border: none;
-    margin-top:10px;
+    padding: 10px 25px;
+    margin-right:25px;
+    border-radius: 25px;
+    font-size:1em;
+    background-color: #38C6F5;
+    margin-top:22px;
     color: #fff;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.form-btn:hover{
+    background-color: #80DFFF;
+}
+
+.form-title{
     font-weight: 700;
+    font-size:1.5em;
+}
+
+label{
+    font-weight: 700;
+}
+
+.divelog-form{
+    margin-top:25px;
+}
+
+.form-section-title{
+    font-size:1.5em;
 }

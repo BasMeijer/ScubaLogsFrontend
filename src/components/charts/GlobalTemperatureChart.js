@@ -7,7 +7,7 @@ class GlobalTemperatureChart extends Component {
             labels: ['January', 'February', 'March', 'April'],
             datasets: [
                 {
-                    label: 'My First dataset',
+                    label: 'Temperature',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: 'rgba(75,192,192,0.4)',
@@ -25,13 +25,26 @@ class GlobalTemperatureChart extends Component {
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: [7, 8, 9, 11, 14, 15, 17]
+                    data: this.props.data
                 }
             ]
         };
 
+        let options = {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        steps: 10,
+                        stepValue: 5,
+                        max: 30
+                    }
+                }]
+            }
+        }
+
         return (
-            <Line data={data} height={100}/>
+            <Line data={data} height={100} options={options} />
         )
     }
 }

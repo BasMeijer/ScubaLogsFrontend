@@ -2,12 +2,16 @@
 .map{
     background-color: green;
     height:650px;
-
 }
+
 h1{
     /*color:#002f7c;*/
     font-weight: 700;
     margin-left:25px;
+}
+
+h1:hover{
+
 }
 
 body{
@@ -16,29 +20,64 @@ body{
 
 
 header{
-    position: absolute;
-    top: 25px;
-    z-index: 99999;
+    position: fixed;
+    top: 0px;
+    z-index: 999999;
+    background-color: #1D5277;
+    color:#fff;
+
 }
 
 .btn-profile{
     float: right;
     padding: 10px 25px;
     margin-right:25px;
-    border-radius: 15px;
-    font-size:1.2em;
-    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    margin-top:30px;
+    border-radius: 25px;
+    font-size:1em;
+    /*background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);*/;
+    background-color: #38C6F5;
+    margin-top:22px;
     color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-logdive{
+    float: right;
+    padding: 10px 25px;
+    margin-right:25px;
+    border-radius: 25px;
+    font-size:1em;
+    /*background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);*/;
+    background-color: #60B818;
+    margin-top:22px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.btn-profile:hover{
+    background-color: #80DFFF;
+    cursor:pointer;
+}
+
+.btn-logdive:hover{
+    background-color: #72D91E;
+    cursor:pointer;
 }
 
 .btn-home{
     float:left;
+    cursor: pointer;
+    font-size:2em;
+    transition: all 0.3s ease;
+}
+
+.btn-home:hover{
+    color: #38C6F5;
 }
 
 .homepage-container{
     margin:0 auto;
-    margin-top:-100px;
+    margin-top:-90px;
     z-index: 99999;
 }
 
@@ -55,10 +94,13 @@ header{
 
 .stat-container{
     background-image: url('../../images/stats-bg-img.jpg');
+    background-size: cover;
+}
+
+.statistics-divider{
     display:flex;
     justify-content: space-between;
     padding: 75px;
-    background-size: cover;
 }
 
 .stat-box{
@@ -68,7 +110,6 @@ header{
     font-weight: 700;
     text-align: center;
     color: #fff;
-
 }
 
 .stat{
@@ -95,4 +136,24 @@ header{
     text-transform: uppercase;
     font-weight: 700;
     font-size: 0.9em;
+}
+
+.divelog-row{
+    border-bottom: 1px solid #f6f6f6;
+    padding-top:10px;
+}
+
+.divelog-username{
+    padding:0;
+    margin:0;
+}
+
+.divelog-location{
+    padding:0;
+    margin:0;
+    font-size:1em;
+}
+
+.divelog-description{
+    color: #7A7A7A;
 }

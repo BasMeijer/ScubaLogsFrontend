@@ -60,3 +60,25 @@ export function getLogsByLocation(location_name) {
         .then(handleRestResponse)
         .then((response) => response)
 }
+
+export function getAllDivelogs() {
+    const options = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json'},
+    }
+
+    return fetch(`${BASE_URL}/divelogs/`, options)
+        .then(handleRestResponse)
+        .then((response) => response)
+}
+
+export function getLogsByUser(username) {
+    const options = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json'},
+    }
+
+    return fetch(`${BASE_URL}/divelogs/users/` + username, options)
+        .then(handleRestResponse)
+        .then((response) => response)
+}
