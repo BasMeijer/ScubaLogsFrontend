@@ -53,6 +53,17 @@ class UserView extends Component {
                     <p className="divelog-description">
                         {divelog.divelogData.description}
                     </p>
+                    <div className="divelog-tags">
+                        <span className="divelog-tag rating-color">
+                            rating: {divelog.divelogData.rating}
+                        </span>
+                        <span className="divelog-tag fauna-color">
+                            life: {divelog.divelogData.fauna}
+                        </span>
+                        <span className="divelog-tag visibility-color">
+                            visibility: {divelog.divelogData.visibility}
+                        </span>
+                    </div>
                 </div>
             )
         })
@@ -125,7 +136,7 @@ class UserView extends Component {
                                 <img src={logbookIcon} alt="" className="stat-icon" />
 
                                 <div className="stat-content">
-                                    <span className="stat">77</span>
+                                    <span className="stat">5</span>
                                     <span className="stat-description">Divelogs</span>
                                 </div>
                             </div>
@@ -146,7 +157,7 @@ class UserView extends Component {
                     <div className="content-box">
                         <div className="pure-u-1">
                             <h3>Dives per month</h3>
-                            <DiveNumberChart data={[5, 8, 12, 9]} />
+                            <DiveNumberChart data={[1, 2, 0, 4]} />
                         </div>
                     </div>
 

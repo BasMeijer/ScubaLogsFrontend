@@ -139,8 +139,9 @@ header{
 }
 
 .divelog-row{
-    border-bottom: 1px solid #f6f6f6;
-    padding-top:10px;
+    border-bottom: 1px solid #C9C9C9;
+    padding:15px 0px;
+
 }
 
 .divelog-username{
@@ -156,4 +157,27 @@ header{
 
 .divelog-description{
     color: #7A7A7A;
+}
+
+.divelog-tags{
+    margin-top:5px;
+}
+
+.divelog-tag{
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 10px;
+    margin-right:5px;
+    font-weight: 700;
+    font-size:0.9em;
+}
+
+.rating-color{
+    background-color: #D6CB2D;
+}
+.fauna-color{
+    background-color: #60B818;
+}
+.visibility-color{
+    background-color: #38C6F5;
 }

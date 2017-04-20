@@ -27,7 +27,7 @@ class OverviewMap extends Component {
             allMarkers = this.createMarkers(this.state.diveLocations)
         }
 
-        let position = [51.92, 4.44]
+        let position = [52.14, 4.49]
 
         if(this.props.center){
             // console.log('center' , this.props.center)
@@ -37,7 +37,7 @@ class OverviewMap extends Component {
 
         return (
             <div className="map-container">
-                <Map center={position} zoom={12} zoomControl={false}>
+                <Map center={position} zoom={10} zoomControl={false}>
                     <TileLayer
                         accessToken='pk.eyJ1IjoiYmFzbWVpamVyIiwiYSI6ImNpdXA4OXlvbDAwMnYydHBrNXp6MW9nMm8ifQ.YRsgU-MOVsYhYlkVb0R-1Q'
                         url='https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token={accessToken}'
@@ -76,11 +76,6 @@ class OverviewMap extends Component {
                     key={diveLocation._id}
                     onClick={() => { this.selectDiveLocation(diveLocation.name) }}
                 >
-                    <Popup>
-                        <div>
-                            such tekst
-                        </div>
-                    </Popup>
                 </Marker>
             )
         })

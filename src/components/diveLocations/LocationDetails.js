@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import OverviewMap from '../map/OverviewMap'
 import GlobalTemperatureChart from '../charts/GlobalTemperatureChart'
 import DiveNumberChart from '../charts/diveNumberChart'
+import LifeNumbersChart from '../charts/LifeNumbersChart'
+
 import { getSingleLocation, getLogsByLocation } from '../../api/rest'
 import { hashHistory } from 'react-router'
 
@@ -12,6 +14,10 @@ import locationIcon from '../../images/location-icon.png'
 import temperatureIcon from '../../images/temperature-icon.png'
 import logbookIcon from '../../images/book-icon.png'
 import starIcon from '../../images/star.png'
+import fishIcon from '../../images/fish.png'
+import plantIcon from '../../images/seaweed.png'
+import safetyIcon from '../../images/checked.png'
+import visibilityIcon from '../../images/eye.png'
 
 class LocationDetails extends Component {
 
@@ -77,6 +83,17 @@ class LocationDetails extends Component {
                     <p className="divelog-description">
                         {divelog.divelogData.description}
                     </p>
+                    <div className="divelog-tags">
+                        <span className="divelog-tag rating-color">
+                            rating: {divelog.divelogData.rating}
+                        </span>
+                        <span className="divelog-tag fauna-color">
+                            life: {divelog.divelogData.fauna}
+                        </span>
+                        <span className="divelog-tag visibility-color">
+                            visibility: {divelog.divelogData.visibility}
+                        </span>
+                    </div>
                 </div>
             )
         })
@@ -147,36 +164,36 @@ class LocationDetails extends Component {
                             <div className="hightlight-item">
                                 <h4 className="hightlight-title">Rating</h4>
                                 <div className="hightlight-content">
-                                    <h5 className="hightlight-number"> {statistics.avgRating}</h5>
+                                    <h5 className="hightlight-number"> {statistics.avgRating}/10</h5>
                                     <img src={starIcon} className="rating-icon" alt="" />
                                 </div>
                             </div>
                             <div className="hightlight-item">
                                 <h4 className="hightlight-title">Life</h4>
                                 <div className="hightlight-content">
-                                    <h5 className="hightlight-number"> {statistics.avgFauna}</h5>
-                                    <img src={starIcon} className="rating-icon" alt="" />
+                                    <h5 className="hightlight-number"> {statistics.avgFauna}/10</h5>
+                                    <img src={fishIcon} className="rating-icon" alt="" />
                                 </div>
                             </div>
                             <div className="hightlight-item">
                                 <h4 className="hightlight-title">Plants</h4>
                                 <div className="hightlight-content">
-                                    <h5 className="hightlight-number"> {statistics.avgFlora}</h5>
-                                    <img src={starIcon} className="rating-icon" alt="" />
+                                    <h5 className="hightlight-number"> {statistics.avgFlora}/10</h5>
+                                    <img src={plantIcon} className="rating-icon" alt="" />
                                 </div>
                             </div>
                             <div className="hightlight-item">
                                 <h4 className="hightlight-title">Safety</h4>
                                 <div className="hightlight-content">
                                     <h5 className="hightlight-number"> Safe</h5>
-                                    <img src={starIcon} className="rating-icon" alt="" />
+                                    <img src={safetyIcon} className="rating-icon" alt="" />
                                 </div>
                             </div>
                             <div className="hightlight-item">
                                 <h4 className="hightlight-title">Visibility</h4>
                                 <div className="hightlight-content">
-                                    <h5 className="hightlight-number"> {statistics.avgVisibility}</h5>
-                                    <img src={starIcon} className="rating-icon" alt="" />
+                                    <h5 className="hightlight-number"> {statistics.avgVisibility}m</h5>
+                                    <img src={visibilityIcon} className="rating-icon" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -216,12 +233,13 @@ class LocationDetails extends Component {
 
                         </div>
 
+                        <div className="content-box home-chart">
+                            <h3>Global Temperature</h3>
+                            <GlobalTemperatureChart data={temperatureData} />
+                        </div>
+
                         <div className="content-box">
 
-                            <div className="pure-u-1 pure-u-md-1-3">
-                                <h3>Top divers</h3>
-
-                            </div>
                             <div className="pure-u-1 pure-u-md-2-3">
                                 <h3>Latest Logs</h3>
                                 {latestDivelogs}
@@ -229,13 +247,13 @@ class LocationDetails extends Component {
                         </div>
 
                         <div className="content-box home-chart">
-                            <h3>Global Temperature</h3>
-                            <GlobalTemperatureChart data={temperatureData} />
+                            <h3>Dives per month</h3>
+                            <DiveNumberChart data={[2, 4, 5, 5]} />
                         </div>
 
                         <div className="content-box home-chart">
-                            <h3>Dives per month</h3>
-                            <DiveNumberChart data={[5, 7, 12, 19]} />
+                            <h3>Life Statistics Month</h3>
+                            <LifeNumbersChart data={[2, 4, 5, 5]} />
                         </div>
 
                     </div>

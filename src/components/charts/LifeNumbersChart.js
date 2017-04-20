@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Line } from 'react-chartjs-2'
 
-class GlobalTemperatureChart extends Component {
+class LifeNumbersChart extends Component {
     render() {
 
 
@@ -9,10 +9,10 @@ class GlobalTemperatureChart extends Component {
             labels: ['January', 'February', 'March', 'April'],
             datasets: [
                 {
-                    label: 'Temperature Current',
+                    label: 'Life Current',
                     fill: true,
                     lineTension: 0.5,
-                    backgroundColor: 'rgba(29, 82, 119, 0.7)',
+                    backgroundColor: 'rgba(0, 224, 202, 0.7)',
                     borderColor: 'rgba(128, 223, 255, 1)',
                     borderCapStyle: 'butt',
                     borderDash: [],
@@ -30,7 +30,7 @@ class GlobalTemperatureChart extends Component {
                     data:this.props.data
                 },
                 {
-                    label: 'Temperature Average',
+                    label: 'Life Average',
                     fill: true,
                     lineTension: 0.5,
                     backgroundColor: 'rgba(29, 82, 119, 0.8)',
@@ -48,7 +48,7 @@ class GlobalTemperatureChart extends Component {
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: [4,6,6,7]
+                    data: [4,5,7,8]
                 }
             ]
         };
@@ -58,7 +58,7 @@ class GlobalTemperatureChart extends Component {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        max: 20
+                        max: 10
                     }
                 }]
             }
@@ -70,4 +70,4 @@ class GlobalTemperatureChart extends Component {
     }
 }
 
-export default GlobalTemperatureChart
+export default LifeNumbersChart

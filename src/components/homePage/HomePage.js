@@ -53,6 +53,17 @@ class HomePage extends Component {
                     <p className="divelog-description">
                         {divelog.divelogData.description}
                     </p>
+                    <div className="divelog-tags">
+                        <span className="divelog-tag rating-color">
+                            rating: {divelog.divelogData.rating}
+                        </span>
+                        <span className="divelog-tag fauna-color">
+                            life: {divelog.divelogData.fauna}
+                        </span>
+                        <span className="divelog-tag visibility-color">
+                            visibility: {divelog.divelogData.visibility}
+                        </span>
+                    </div>
                 </div>
             )
         })
@@ -128,10 +139,7 @@ class HomePage extends Component {
                     </div>
 
                     <div className="content-box">
-                        <div className="pure-u-1 pure-u-md-1-3">
-                            <h3>Top Contributors</h3>
-                        </div>
-                        <div className="pure-u-1 pure-u-md-2-3">
+                        <div className="pure-u-1">
                             <h3>Latest Logs</h3>
                             {latestDivelogs}
                         </div>

@@ -5,16 +5,17 @@ export default React.createClass({
     displayName: 'DiveNumberChart',
 
     render() {
+
         const data = {
-            labels: ['January', 'February', 'March', 'April'],
+            labels: ['January', 'February', 'March', 'April', 'May'],
             datasets: [
                 {
                     label: 'Dives per month',
-                    backgroundColor: 'rgba(255,99,132,0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
+                    backgroundColor: 'rgba(29, 82, 119, 0.7)',
+                    borderColor: 'rgba(29, 82, 119, 1)',
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-                    hoverBorderColor: 'rgba(255,99,132,1)',
+                    hoverBackgroundColor: 'rgba(128, 223, 255, 0.7)',
+                    hoverBorderColor: 'rgba(128, 223, 255, 1)',
                     data: this.props.data
                 }
             ]
@@ -27,7 +28,14 @@ export default React.createClass({
                     data={data}
                     height={300}
                     options={{
-                        maintainAspectRatio: false
+                        maintainAspectRatio: false,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
                     }}
                 />
             </div>

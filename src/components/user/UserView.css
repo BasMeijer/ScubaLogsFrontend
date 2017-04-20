@@ -1,5 +1,5 @@
 .user-background{
-    height:650px;
+    height:500px;
     background-color: blue;
     background-image: url('../../images/profile-pic2.jpg');
     background-size: cover;
@@ -9,7 +9,7 @@
     border-radius: 50%;
     width: 125px;
     height: 125px;
-    background-color: green;
+     background-color: blue;
     float:left;
     background-image: url('../../images/pfpic.jpg');
     background-size: cover;
